@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>VoidTransient's Blog</title><link>https://voidtransient.github.io</link><description>这里是VoidTransient的博客，欢迎你的到来OvO</description><copyright>VoidTransient's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/189825951?v=4</url><title>avatar</title><link>https://voidtransient.github.io</link></image><lastBuildDate>Fri, 17 Oct 2025 12:06:15 +0000</lastBuildDate><managingEditor>VoidTransient's Blog</managingEditor><ttl>60</ttl><webMaster>VoidTransient's Blog</webMaster><item><title>回溯</title><link>https://voidtransient.github.io/post/hui-su.html</link><description># BackTrace
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>VoidTransient's Blog</title><link>https://voidtransient.github.io</link><description>这里是VoidTransient的博客，欢迎你的到来OvO</description><copyright>VoidTransient's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/189825951?v=4</url><title>avatar</title><link>https://voidtransient.github.io</link></image><lastBuildDate>Mon, 20 Oct 2025 19:58:52 +0000</lastBuildDate><managingEditor>VoidTransient's Blog</managingEditor><ttl>60</ttl><webMaster>VoidTransient's Blog</webMaster><item><title>回溯</title><link>https://voidtransient.github.io/post/hui-su.html</link><description># BackTrace
 ## 1. 子集型
 ```cpp
 //输入
@@ -116,4 +116,22 @@ dfs(0);
 。</description><guid isPermaLink="true">https://voidtransient.github.io/post/hui-su.html</guid><pubDate>Fri, 17 Oct 2025 12:03:56 +0000</pubDate></item><item><title>TEST-1</title><link>https://voidtransient.github.io/post/TEST-1.html</link><description>Just a test...
 
 ![Image](https://github.com/user-attachments/assets/450b7baa-ace2-4c46-9cfc-8c22548ec88f)
-。</description><guid isPermaLink="true">https://voidtransient.github.io/post/TEST-1.html</guid><pubDate>Fri, 17 Oct 2025 11:10:47 +0000</pubDate></item></channel></rss>
+。</description><guid isPermaLink="true">https://voidtransient.github.io/post/TEST-1.html</guid><pubDate>Fri, 17 Oct 2025 11:10:47 +0000</pubDate></item><item><title>友情链接</title><link>https://voidtransient.github.io/link.html</link><description> # 友情链接
+&gt; [!NOTE]
+&gt; 这里记录了一些有意思的链接~ QwQ
+
+**我的友链**
+ - [chengzisoft](https://www.chengzisoft.top/) 世界拯救技术宅 QwQ
+ - 
+
+
+&gt; [!IMPORTANT]
+&gt; **友链申请要求：**
+&gt; 
+&gt; ✅ 网站能够正常访问
+&gt; ✅ 网站类型为个人博客
+&gt; ✅ 网站需要包含本站友链
+&gt; ❌ 不接受商业性或包含侵入性广告的站点
+&gt; ❌ 不接受违反中华人民共和国法律法规的站点
+&gt; 
+&gt; _如果符合如上条件，可在本页面评论区留言您的友链信息 OvO_。</description><guid isPermaLink="true">https://voidtransient.github.io/link.html</guid><pubDate>Mon, 20 Oct 2025 19:58:17 +0000</pubDate></item></channel></rss>
