@@ -3,6 +3,8 @@
     "subTitle":"这里是VoidTransient的博客，欢迎你的到来OvO",
     "avatarUrl":"https://avatars.githubusercontent.com/u/189825951?v=4",
     "GMEEK_VERSION":"last",
+    "startSite":"10/21/2025",
+    "singlePage":["link","about"],
     "allHead":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>",
     "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>"
 }
