@@ -1,5 +1,309 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>VoidTransient's Blog</title><link>https://voidtransient.github.io</link><description>"We finally reached the end of the world."</description><copyright>VoidTransient's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/189825951?v=4</url><title>avatar</title><link>https://voidtransient.github.io</link></image><lastBuildDate>Mon, 20 Oct 2025 20:21:21 +0000</lastBuildDate><managingEditor>VoidTransient's Blog</managingEditor><ttl>60</ttl><webMaster>VoidTransient's Blog</webMaster><item><title>回溯</title><link>https://voidtransient.github.io/post/hui-su.html</link><description># BackTrace
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>VoidTransient's Blog</title><link>https://voidtransient.github.io</link><description>"We finally reached the end of the world."</description><copyright>VoidTransient's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/189825951?v=4</url><title>avatar</title><link>https://voidtransient.github.io</link></image><lastBuildDate>Mon, 27 Oct 2025 13:17:07 +0000</lastBuildDate><managingEditor>VoidTransient's Blog</managingEditor><ttl>60</ttl><webMaster>VoidTransient's Blog</webMaster><item><title>最短路</title><link>https://voidtransient.github.io/post/zui-duan-lu.html</link><description># Dijkstra With Heap Optimization
+
+&gt;[!NOTE]
+&gt;类型：$单源最短路$ 
+&gt;适用：$非负权图$
+&gt;时间复杂度：$O((n + m) \log_2 n)$
+&gt;空间复杂度：$O(n + m)$
+
+```cpp
+struct edge
+{
+    int v, w;
+};
+
+struct node
+{
+    int dis, u;
+    bool operator&gt;(const node &amp;a) const { return dis &gt; a.dis; }
+};
+  
+vector&lt;vector&lt;edge&gt;&gt; e;
+vector&lt;int&gt; dis, pre;
+vector&lt;bool&gt; vis;
+  
+// 回溯 a 到 b 的最短路径
+vector&lt;int&gt; get_path(int a, int b)
+{
+    if (dis[b] == INF) return {};  // 不可达，返回空
+    vector&lt;int&gt; res;
+    for (int cur = b; cur != a; cur = pre[cur])
+        res.push_back(cur);
+    res.push_back(a);
+    reverse(all(res));
+    return res;
+}
+
+void dijkstra(int s, int n)
+{
+    dis.assign(n + 1, INF);
+    vis.assign(n + 1, false);
+    pre.assign(n + 1, -1);
+  
+    dis[s] = 0;
+    priority_queue&lt;node, vector&lt;node&gt;, greater&lt;node&gt;&gt; q;
+    q.push({0, s});
+    
+    while (!q.empty())
+    {
+        int u = q.top().u;
+        q.pop();
+
+        if (vis[u]) continue;
+        vis[u] = true;
+
+        for (auto&amp; [v, w] : e[u])
+        {
+            if (dis[v] &gt; dis[u] + w)
+            {
+                dis[v] = dis[u] + w;
+                pre[v] = u;  
+                q.push({dis[v], v});
+            }
+        }
+    }
+}
+
+void solve()
+{
+    int n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+
+    e.assign(n + 1, vector&lt;edge&gt;());
+
+    for (int i = 0; i &lt; m; i++)
+    {
+        int u, v, w;
+        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+        e[u].push_back({v, w});
+        e[v].push_back({u, w});  // 无向图
+    }
+
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+  
+    dijkstra(a, n); // 起点，顶点数
+  
+    vector&lt;int&gt; path = get_path(a, b);
+
+    if (path.empty()) cout &lt;&lt; -1 &lt;&lt; endl;
+    else vD(path);
+}
+```
+# Floyd
+
+&gt;[!NOTE]
+&gt;类型：$多源最短路$ 
+&gt;适用：$可含负权边，但不能有负环，n \leq 400$
+&gt;时间复杂度：$O(n^3)$
+&gt;空间复杂度：$O(n^2)$
+
+```cpp
+vector&lt;vector&lt;int&gt;&gt; dist;  // dist[i][j] = i到j的最短距离
+vector&lt;vector&lt;int&gt;&gt; path;  // path[i][j] = i到j的最短路径中j的前一个节点
+
+// 回溯a到b的最短路径
+vector&lt;int&gt; get_path(int a, int b)
+{
+    if (dist[a][b] == INF) return {};  // 不可达
+    vector&lt;int&gt; res;
+    for (int cur = b; cur != a; cur = path[a][cur])
+        res.push_back(cur);
+    res.push_back(a);  
+    reverse(all(res));  
+    return res;
+}
+
+void floyd(int n)
+{
+    for (int i = 1; i &lt;= n; i++)
+        for (int j = 1; j &lt;= n; j++)
+            path[i][j] = i != j &amp;&amp; dist[i][j] != INF ? i : -1;
+
+    for (int k = 1; k &lt;= n; k++)
+        for (int i = 1; i &lt;= n; i++)
+            for (int j = 1; j &lt;= n; j++)
+                if (dist[i][k] + dist[k][j] &lt; dist[i][j])
+                {
+                    dist[i][j] = dist[i][k] + dist[k][j];
+                    path[i][j] = path[k][j];  
+                }
+}
+
+void solve()
+{
+    int n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+
+    dist.assign(n + 1, vector&lt;int&gt;(n + 1, INF));
+    path.assign(n + 1, vector&lt;int&gt;(n + 1, -1));
+    for (int i = 1; i &lt;= n; i++)
+        dist[i][i] = 0;  
+
+    for (int i = 0; i &lt; m; i++)
+    {
+        int u, v, w;
+        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+        if (w &lt; dist[u][v])
+        {
+            dist[u][v] = w;
+            dist[v][u] = w;  // 无向图
+        }
+    }
+
+    floyd(n);
+
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+
+    vector&lt;int&gt; res = get_path(a, b);
+
+    if (res.empty()) cout &lt;&lt; -1 &lt;&lt; endl;  
+    else vD(res);  
+}
+```
+# SPFA (Bellman–Ford With Queue Optimization)
+
+&gt;[!NOTE]
+&gt;类型：$单源最短路$
+&gt;适用：$可含负权边，但不允许存在$**从起点可达的负环**
+&gt;时间复杂度：$O(m) ~ O(nm)$
+&gt;空间复杂度：$O(n + m)$
+
+```cpp
+struct edge
+{
+    int v, w;
+};
+  
+vector&lt;vector&lt;edge&gt;&gt; e;
+vector&lt;int&gt; dis, cnt, pre;
+vector&lt;bool&gt; vis;
+
+// 回溯 a 到 b 的最短路径（需确保无负环且可达）
+vector&lt;int&gt; get_path(int a, int b)
+{
+    if (dis[b] == INF) return {};
+    vector&lt;int&gt; res;
+    for (int cur = b; cur != a; cur = pre[cur])
+        res.push_back(cur);
+    res.push_back(a);
+    reverse(all(res));
+    return res;
+}
+
+bool spfa(int s, int n)
+{
+    dis.assign(n + 1, INF);
+    cnt.assign(n + 1, 0);
+    vis.assign(n + 1, false);
+    pre.assign(n + 1, -1);
+
+    dis[s] = 0;
+    vis[s] = true;
+    queue&lt;int&gt; q;
+    q.push(s);
+
+    while (!q.empty())
+    {
+        int u = q.front();
+        q.pop();
+        vis[u] = false;
+        for (auto [v, w] : e[u])
+        {
+            if (dis[v] &gt; dis[u] + w)
+            {
+                dis[v] = dis[u] + w;
+                pre[v] = u;  
+                cnt[v] = cnt[u] + 1;
+                if (cnt[v] &gt;= n) return false;  // 存在负环
+                if (!vis[v])
+                {
+                    q.push(v);
+                    vis[v] = true;
+                }
+            }
+        }
+    }
+    return true;  // 无负环
+}
+
+void solve()
+{
+    int n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+
+    e.assign(n + 1, vector&lt;edge&gt;());
+
+    for (int i = 0; i &lt; m; i++)
+    {
+        int u, v, w;
+        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+        e[u].push_back({v, w});
+        e[v].push_back({u, w});  // 无向图
+    }
+
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+
+    bool has_negative_cycle = !spfa(a, n); // 起点，顶点数
+
+    if (has_negative_cycle) cout &lt;&lt; '不好!有负环!' &lt;&lt; endl;
+    else
+    {
+        vector&lt;int&gt; path = get_path(a, b);
+
+        if (path.empty()) cout &lt;&lt; -1 &lt;&lt; endl;
+        else vD(path);
+    }
+}
+```
+
+# Other
+```cpp
+#include &lt;bits/stdc++.h&gt;
+#define inf 0x3f3f3f3f
+#define INF 0x3f3f3f3f3f3f3f3f
+#define MOD 1000000007
+#define mod 998244353
+#define all(_x) _x.begin(), _x.end()
+#define vcin(_x) for(auto&amp; _i : _x) cin &gt;&gt; _i
+#define vvcin(_x) for(auto&amp; _j : _x) for(auto&amp; _i : _j) cin &gt;&gt; _i
+#define D(_x) cout &lt;&lt; _x &lt;&lt; endl
+#define vD(_x) for(int _i = 0; _i &lt; _x.size(); _i++) cout &lt;&lt; _x[_i] &lt;&lt; ' \n'[_i == _x.size() - 1]
+#define input(n, a) int n; cin &gt;&gt; n; vector&lt;int&gt; a(n); vcin(a)
+#define YES cout &lt;&lt; 'YES' &lt;&lt; endl
+#define NO cout &lt;&lt; 'NO' &lt;&lt; endl
+#define Yes cout &lt;&lt; 'Yes' &lt;&lt; endl
+#define No cout &lt;&lt; 'No' &lt;&lt; endl
+#define yes cout &lt;&lt; 'yes' &lt;&lt; endl
+#define no cout &lt;&lt; 'no' &lt;&lt; endl
+using namespace std;
+
+#define int long long
+#define endl '\n'
+
+void solve()
+{
+	//Code
+}
+
+signed main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int _ = 1;
+cin &gt;&gt; _;
+    while (_--)
+        solve();
+    return 0;
+}
+```
+
+&gt;[!IMPORTANT]
+&gt;solve()中的代码为调用示例
+。</description><guid isPermaLink="true">https://voidtransient.github.io/post/zui-duan-lu.html</guid><pubDate>Mon, 27 Oct 2025 13:16:25 +0000</pubDate></item><item><title>回溯</title><link>https://voidtransient.github.io/post/hui-su.html</link><description># BackTrace
 ## 1. 子集型
 ```cpp
 //输入
