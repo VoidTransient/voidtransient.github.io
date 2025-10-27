@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>VoidTransient's Blog</title><link>https://voidtransient.github.io</link><description>"We finally reached the end of the world."</description><copyright>VoidTransient's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/189825951?v=4</url><title>avatar</title><link>https://voidtransient.github.io</link></image><lastBuildDate>Mon, 27 Oct 2025 13:17:07 +0000</lastBuildDate><managingEditor>VoidTransient's Blog</managingEditor><ttl>60</ttl><webMaster>VoidTransient's Blog</webMaster><item><title>最短路</title><link>https://voidtransient.github.io/post/zui-duan-lu.html</link><description># Dijkstra With Heap Optimization
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>VoidTransient's Blog</title><link>https://voidtransient.github.io</link><description>"We finally reached the end of the world."</description><copyright>VoidTransient's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/189825951?v=4</url><title>avatar</title><link>https://voidtransient.github.io</link></image><lastBuildDate>Mon, 27 Oct 2025 13:24:04 +0000</lastBuildDate><managingEditor>VoidTransient's Blog</managingEditor><ttl>60</ttl><webMaster>VoidTransient's Blog</webMaster><item><title>最短路</title><link>https://voidtransient.github.io/post/zui-duan-lu.html</link><description># Dijkstra With Heap Optimization
 
 &gt;[!NOTE]
-&gt;类型：$单源最短路$ 
-&gt;适用：$非负权图$
-&gt;时间复杂度：$O((n + m) \log_2 n)$
-&gt;空间复杂度：$O(n + m)$
+&gt;类型：单源最短路
+&gt;适用：非负权图
+&gt;时间复杂度：O((n + m) log2 n)
+&gt;空间复杂度：O(n + m)
 
 ```cpp
 struct edge
@@ -94,10 +94,10 @@ void solve()
 # Floyd
 
 &gt;[!NOTE]
-&gt;类型：$多源最短路$ 
-&gt;适用：$可含负权边，但不能有负环，n \leq 400$
-&gt;时间复杂度：$O(n^3)$
-&gt;空间复杂度：$O(n^2)$
+&gt;类型：多源最短路
+&gt;适用：可含负权边，但不能有负环，n &lt;= 400
+&gt;时间复杂度：O(n^3)
+&gt;空间复杂度：O(n^2)
 
 ```cpp
 vector&lt;vector&lt;int&gt;&gt; dist;  // dist[i][j] = i到j的最短距离
@@ -166,10 +166,10 @@ void solve()
 # SPFA (Bellman–Ford With Queue Optimization)
 
 &gt;[!NOTE]
-&gt;类型：$单源最短路$
-&gt;适用：$可含负权边，但不允许存在$**从起点可达的负环**
-&gt;时间复杂度：$O(m) ~ O(nm)$
-&gt;空间复杂度：$O(n + m)$
+&gt;类型：单源最短路
+&gt;适用：可含负权边，但不允许存在**从起点可达的负环**
+&gt;时间复杂度：O(m) ~ O(nm)
+&gt;空间复杂度：O(n + m)
 
 ```cpp
 struct edge

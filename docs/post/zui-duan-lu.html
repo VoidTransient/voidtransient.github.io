@@ -13,10 +13,10 @@
 <meta name="description" content="# Dijkstra With Heap Optimization
 
 >[!NOTE]
->类型：$单源最短路$ 
->适用：$非负权图$
->时间复杂度：$O((n + m) \log_2 n)$
->空间复杂度：$O(n + m)$
+>类型：单源最短路
+>适用：非负权图
+>时间复杂度：O((n + m) log2 n)
+>空间复杂度：O(n + m)
 
 ```cpp
 struct edge
@@ -105,10 +105,10 @@ void solve()
 # Floyd
 
 >[!NOTE]
->类型：$多源最短路$ 
->适用：$可含负权边，但不能有负环，n \leq 400$
->时间复杂度：$O(n^3)$
->空间复杂度：$O(n^2)$
+>类型：多源最短路
+>适用：可含负权边，但不能有负环，n <= 400
+>时间复杂度：O(n^3)
+>空间复杂度：O(n^2)
 
 ```cpp
 vector<vector<int>> dist;  // dist[i][j] = i到j的最短距离
@@ -177,10 +177,10 @@ void solve()
 # SPFA (Bellman–Ford With Queue Optimization)
 
 >[!NOTE]
->类型：$单源最短路$
->适用：$可含负权边，但不允许存在$**从起点可达的负环**
->时间复杂度：$O(m) ~ O(nm)$
->空间复杂度：$O(n + m)$
+>类型：单源最短路
+>适用：可含负权边，但不允许存在**从起点可达的负环**
+>时间复杂度：O(m) ~ O(nm)
+>空间复杂度：O(n + m)
 
 ```cpp
 struct edge
@@ -319,10 +319,10 @@ cin >> _;
 <meta property="og:description" content="# Dijkstra With Heap Optimization
 
 >[!NOTE]
->类型：$单源最短路$ 
->适用：$非负权图$
->时间复杂度：$O((n + m) \log_2 n)$
->空间复杂度：$O(n + m)$
+>类型：单源最短路
+>适用：非负权图
+>时间复杂度：O((n + m) log2 n)
+>空间复杂度：O(n + m)
 
 ```cpp
 struct edge
@@ -411,10 +411,10 @@ void solve()
 # Floyd
 
 >[!NOTE]
->类型：$多源最短路$ 
->适用：$可含负权边，但不能有负环，n \leq 400$
->时间复杂度：$O(n^3)$
->空间复杂度：$O(n^2)$
+>类型：多源最短路
+>适用：可含负权边，但不能有负环，n <= 400
+>时间复杂度：O(n^3)
+>空间复杂度：O(n^2)
 
 ```cpp
 vector<vector<int>> dist;  // dist[i][j] = i到j的最短距离
@@ -483,10 +483,10 @@ void solve()
 # SPFA (Bellman–Ford With Queue Optimization)
 
 >[!NOTE]
->类型：$单源最短路$
->适用：$可含负权边，但不允许存在$**从起点可达的负环**
->时间复杂度：$O(m) ~ O(nm)$
->空间复杂度：$O(n + m)$
+>类型：单源最短路
+>适用：可含负权边，但不允许存在**从起点可达的负环**
+>时间复杂度：O(m) ~ O(nm)
+>空间复杂度：O(n + m)
 
 ```cpp
 struct edge
@@ -692,10 +692,10 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><h1>Dijkstra With Heap Optimization</h1>
-<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>类型：$单源最短路$<br>
-适用：$非负权图$<br>
-时间复杂度：$O((n + m) \log_2 n)$<br>
-空间复杂度：$O(n + m)$</p>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>类型：单源最短路<br>
+适用：非负权图<br>
+时间复杂度：O((n + m) log2 n)<br>
+空间复杂度：O(n + m)</p>
 </div>
 <div class="highlight highlight-source-c++"><pre class="notranslate"><span class="pl-k">struct</span> <span class="pl-en">edge</span>
 {
@@ -780,10 +780,10 @@ vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-en">get_path</span>(
     <span class="pl-k">else</span> <span class="pl-c1">vD</span>(path);
 }</pre></div>
 <h1>Floyd</h1>
-<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>类型：$多源最短路$<br>
-适用：$可含负权边，但不能有负环，n \leq 400$<br>
-时间复杂度：$O(n^3)$<br>
-空间复杂度：$O(n^2)$</p>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>类型：多源最短路<br>
+适用：可含负权边，但不能有负环，n &lt;= 400<br>
+时间复杂度：O(n^3)<br>
+空间复杂度：O(n^2)</p>
 </div>
 <div class="highlight highlight-source-c++"><pre class="notranslate">vector&lt;vector&lt;<span class="pl-k">int</span>&gt;&gt; dist;  <span class="pl-c"><span class="pl-c">//</span> dist[i][j] = i到j的最短距离</span>
 vector&lt;vector&lt;<span class="pl-k">int</span>&gt;&gt; path;  <span class="pl-c"><span class="pl-c">//</span> path[i][j] = i到j的最短路径中j的前一个节点</span>
@@ -848,10 +848,10 @@ vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-en">get_path</span>(
     <span class="pl-k">else</span> <span class="pl-c1">vD</span>(res);  
 }</pre></div>
 <h1>SPFA (Bellman–Ford With Queue Optimization)</h1>
-<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>类型：$单源最短路$<br>
-适用：$可含负权边，但不允许存在$<strong>从起点可达的负环</strong><br>
-时间复杂度：$O(m) ~ O(nm)$<br>
-空间复杂度：$O(n + m)$</p>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>类型：单源最短路<br>
+适用：可含负权边，但不允许存在<strong>从起点可达的负环</strong><br>
+时间复杂度：O(m) ~ O(nm)<br>
+空间复杂度：O(n + m)</p>
 </div>
 <div class="highlight highlight-source-c++"><pre class="notranslate"><span class="pl-k">struct</span> <span class="pl-en">edge</span>
 {
